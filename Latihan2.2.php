@@ -7,7 +7,7 @@ class Belanja { // ini adalah class Belanja
     public int $HargaBarang=50000;  // Harga satuan barang
     public int $JumlahBarang=2; // Jumlah barang yang dibeli
     public float $TotalBayar;  // Total bayar (akan dihitung)
-    public float $Diskon;  // Diskon pembelian
+    public float $Diskon = 0.2;  // Diskon pembelian
 
     //ini adalah variabel static
     public static float $pajak = 0.02;
@@ -22,12 +22,12 @@ class Belanja { // ini adalah class Belanja
     }    
 
     public function hitungDiskon(): float {
-        $Total = $this->hitungTotal() * $this->hitungDiskon;
+        $Total = $this->hitungTotal() * $this->Diskon;
         return $Total; //diskon10%
     }
 
     public function Total(): float {
-        $Total = $this->hitungTotal() - $this->hitungDiskon;
+        $Total = $this->hitungTotal() - $this->hitungDiskon();
         return $Total;
     }
     public function tampilRincian  ($NamaPembeli): void{
@@ -35,9 +35,9 @@ class Belanja { // ini adalah class Belanja
         echo "Nama Barang : " . $this->NamaBarang . "<br>";
         echo "Harga Barang : " . $this->HargaBarang . "<br>";
         echo "Jumlah Barang : " . $this->JumlahBarang . "<br>";
-        echo "hitung Total : " . $this->hitungTotal . "<br>";
-        echo "hitung Diskon : " . $this->hitungDiskon ."<br>";
-        echo "hitung Total Bayar : " . $this->total . "<br>";
+        echo "hitung Total : " . $this->hitungTotal() . "<br>";
+        echo "hitung Diskon : " . $this->hitungDiskon() ."<br>";
+        echo "hitung Total Bayar : " . $this->total() . "<br>";
     }     
 
 }
